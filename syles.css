@@ -1,0 +1,351 @@
+/* Estilos generales */
+body {
+    font-family: serif;
+    margin: 0;
+    padding: 0;
+
+
+}
+
+header {
+    background-color: #0000007f;
+    color: #ffffff;
+    padding: 5px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+header div a h1 {
+    margin-left: 25px;
+    color: #fff;
+    text-decoration: underline;
+}
+
+header div a h1:hover {
+    color: #a6a3a3;
+    text-decoration: underline;
+    text-shadow: 4px 3px 4px rgba(0, 0, 0, 0.738);
+
+}
+
+
+nav ul {
+    list-style-type: none;
+    padding: 10px;
+    
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 40px;
+    text-align: center;
+
+    
+    
+}
+
+nav a  {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 20px;
+    
+
+} 
+
+nav a:hover {
+    color: #a6a3a3;
+    text-decoration: underline;
+    
+    
+}
+
+.bg1{
+    background-image: url(/IMG/694280.jpeg);
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.bg2{
+    background-image: url(/IMG/popoool.jpg);
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.bg3{
+    background-image: url(/IMG/bg3.JPG);
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.bg4{
+    background-image: url(/IMG/bgg4.jpg);
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.services {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Divide en dos columnas */
+    gap: 0px;
+}
+
+.services div img {
+    margin-top: 25px;
+    width: 25rem;
+    height: 15rem;
+    padding: 8px;
+    background-color: rgba(0, 0, 0, 0.266);
+    border-radius: 10px;
+}
+
+.services div img:hover {
+    background-color: rgba(255, 255, 255, 0.501);
+}
+
+.services div h3 {
+    font-size: 30px;
+    text-shadow: 4px 3px 4px rgba(255, 255, 255, 0.79);
+}
+
+.services div h3,a:hover {
+    text-shadow: 4px 3px 4px rgba(0, 0, 0, 0.932);
+}
+
+.services div a
+{
+   color: #ffffff;
+   margin: 10px;
+   text-decoration: none;
+   margin-bottom:10px ;
+   
+}
+
+.services div a:hover
+{
+   color: #ffffff;
+   margin: 10px;
+   text-decoration: underline;
+   margin-bottom:10px ;
+   text-shadow: 4px 3px 4px rgba(0, 0, 0, 0.738);
+}
+
+.more{
+    font-size: 30px;
+    color: #ffffff;
+    text-shadow: 4px 3px 4px rgba(0, 0, 0, 0.738);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
+    text-decoration: none;
+}
+
+.more:hover{
+    font-size: 35px;
+    text-decoration: underline;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+
+
+.resaltado{
+    border-radius: 10px;
+    color: #fff;
+    padding: 8px;
+    background-color: rgba(0, 0, 0, 0.57); 
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
+
+}
+
+.shadow{
+    text-shadow: 4px 3px 4px rgba(0, 0, 0, 0.738);
+}
+
+
+/* Estilos SECCION INCIO */
+.seccion {
+    
+    padding: 40px;
+    text-align: center;
+    color: #ffffff;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+   
+}
+
+.seccion h2 {
+    font-size: 30px;
+    margin-top: 90px;
+    
+}
+
+.seccion p {
+    font-weight: bold;
+    font-size: 17px;
+    line-height: 2.5;
+    border-radius: 10px;
+    color: #ffffff;
+    padding: 3px;
+    background-color: rgba(0, 0, 0, 0.636); 
+}
+
+/* Estilos SECCION NOSOTROS */
+.seccion2 {
+    padding: 40px;
+    text-align: center;
+    color: #ffffff;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: rgba(0, 0, 0, 0.488); 
+    align-items: center;
+}
+
+.seccion2 h2 {
+    font-size: 40px;
+    margin-top: 70px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.812);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
+
+
+    
+}
+
+.seccion2 p {
+    
+    font-size: 20px;
+    line-height: 1.5;
+    border-radius: 10px;
+    color: #ffffff;
+    padding: 3px;
+    text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.875);
+    margin-inline:130px;
+}
+
+.btn{
+    background-color: #ffffffc8; 
+    color: rgb(0, 0, 0); 
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    font-size: 16px; 
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
+    font-weight: bold;
+
+}
+
+.btn:hover{
+    background-color: #4e4e4e6e; 
+    color: rgb(255, 255, 255); 
+    text-decoration: underline;
+}
+
+/*ESTILOS SERVICIOS*/
+
+.seccion3 {
+    padding: 40px;
+    text-align: center;
+    color: #ffffff;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
+    background-color: rgba(0, 0, 0, 0.09); 
+    align-items: center;
+}
+
+.seccion3 h2{
+    font-size: 40px;
+    margin-top: 90px;
+    text-shadow: 4px 3px 4px rgba(0, 0, 0, 0.738);
+}
+
+.services2 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Divide en dos columnas */
+    gap: 0px;
+}
+
+.services2 div img {
+    margin-top: 25px;
+    width: 23rem;
+    height: 15rem;
+    padding: 8px;
+    background-color: rgba(0, 0, 0, 0.266);
+    border-radius: 10px;
+}
+
+.services2 div img:hover {
+    background-color: rgba(255, 255, 255, 0.266);
+}
+
+.services2 div h3 {
+    font-size: 20px;
+}
+
+.services2 div h3,a:hover {
+    text-shadow: 4px 3px 4px rgba(0, 0, 0, 0.738);
+}
+
+.services2 div a
+{
+   color: #ffffff;
+   margin: 10px;
+   text-decoration: none;
+   margin-bottom:10px ;
+   
+}
+
+.services2 div a:hover
+{
+   font-size: 10px;
+   text-decoration: underline;
+   margin-bottom:10px ;
+   text-shadow: 4px 3px 4px rgba(0, 0, 0, 0.738);
+}
+
+/*ESTILOS CONTACTO*/
+
+.seccion4 {
+    padding: 40px;
+    text-align: center;
+    color: #ffffff;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
+    background-color: rgba(0, 0, 0, 0.217); 
+    align-items: center;
+    text-shadow: 4px 3px 4px rgba(0, 0, 0, 0.738);
+
+}
+
+.seccion4 h2{
+    font-size: 40px;
+    margin-top: 90px;
+}
+
+.seccion4 div{
+    margin-bottom: 15px;
+}
+
+.seccion4 p{
+    font-size: 25px;
+}
+
+.icons {
+    font-size: 40px;
+    text-decoration: none;
+    color: #ffffff;
+    padding: 10px;
+    margin: 10px;
+}
+
+
+/* Estilos del pie de página */
+footer {
+    background-color: #000000;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
+}
