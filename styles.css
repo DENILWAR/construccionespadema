@@ -1,120 +1,239 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     padding: 0;
+    cursor: none;
+    overflow-x: hidden;
+}
 
+/* Cursor personalizado */
+.custom-cursor {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #fff;
+    pointer-events: none;
+    z-index: 10000;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    transform: translate(-50%, -50%);
+}
 
+.custom-cursor-circle {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    pointer-events: none;
+    z-index: 9999;
+    transition: all 0.3s ease;
+    transform: translate(-50%, -50%);
+}
+
+/* Estado hover para elementos clickeables */
+.custom-cursor-circle.hover {
+    width: 60px;
+    height: 60px;
+    border-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.6), 0 0 40px rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.custom-cursor.hover {
+    transform: translate(-50%, -50%) scale(0.7);
+}
+
+/* Ocultar cursor por defecto */
+a, button, .btn, .icons, input, textarea {
+    cursor: none;
+}
+
+/* Prevenir scroll horizontal */
+html {
+    overflow-x: hidden;
+}
+
+/* Prevenir scroll cuando el menú está abierto en móvil */
+body.menu-open {
+    overflow: hidden;
 }
 
 /*CONSTRUCCIONES PADEMA SL*/
 header {
     background-color: #0000007f;
+    backdrop-filter: blur(10px);
     color: #ffffff;
-    padding: 5px;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
+    padding: 5px 20px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    transition: all 0.3s ease;
 }
 
-header div a h1 {
-    margin-left: 25px;
+.logo-container {
+    flex: 1;
+}
+
+.logo-container a h1 {
+    margin-left: 5px;
     color: #fff;
     text-decoration: underline;
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    transition: all 0.3s ease;
 }
 
-header div a h1:hover {
+.logo-container a h1:hover {
     color: #a6a3a3;
     text-decoration: underline;
     text-shadow: 4px 3px 4px rgba(0, 0, 0, 0.738);
+}
 
+/* Menú hamburguesa - oculto por defecto */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001;
+}
+
+.menu-toggle span {
+    width: 30px;
+    height: 3px;
+    background-color: #fff;
+    margin: 4px 0;
+    transition: all 0.3s ease;
+    border-radius: 3px;
+}
+
+.menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(8px, -8px);
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
 }
 
 
 nav ul {
     list-style-type: none;
     padding: 10px;
-    
+    margin: 0;
+    display: flex;
+    gap: 30px;
 }
 
 nav ul li {
-    display: inline;
-    margin-right: 50px;
-    text-align: center;  
+    display: inline-block;
 }
 
 nav a {
     color: #ffffff;
     text-decoration: none;
-    font-size: 20px;
-} 
+    font-size: clamp(16px, 2vw, 20px);
+    transition: all 0.3s ease;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
 
 nav a:hover {
     color: #a6a3a3;
     text-decoration: underline;
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 /* Estilos SECCION INCIO */
 .seccion {
-    
-    padding: 40px;
+    padding: clamp(20px, 5vw, 40px);
     text-align: center;
     color: #ffffff;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-   
 }
 
 .seccion h2 {
-    font-size: 30px;
-    margin-top: 90px;
-    
+    font-size: clamp(24px, 5vw, 30px);
+    margin-top: clamp(70px, 15vw, 90px);
+}
+
+.seccion h3 {
+    font-size: clamp(18px, 3vw, 25px);
+}
+
+.seccion h4 {
+    font-size: clamp(14px, 2.5vw, 18px);
 }
 
 .seccion p {
     font-weight: bold;
-    font-size: 17px;
+    font-size: clamp(15px, 2.5vw, 17px);
     line-height: 2.5;
     border-radius: 10px;
     color: #ffffff;
-    padding: 3px;
-    background-color: rgba(0, 0, 0, 0.636); 
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.636);
 }
 
 /*SECCION PISCINAS*/
-.bg1{
+.bg1 {
     background-image: url(/IMG/pool.jpeg);
-    background-size:cover;
+    background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    background-position: center;
 }
 
-.btn{
-    background-color: #ffffffc8; 
-    color: rgb(0, 0, 0); 
-    padding: 10px 20px; 
-    border: none; 
-    border-radius: 5px; 
-    cursor: pointer; 
-    font-size: 22px; 
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
+.btn {
+    background-color: #ffffffc8;
+    color: rgb(0, 0, 0);
+    padding: clamp(8px, 2vw, 10px) clamp(15px, 3vw, 20px);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: clamp(16px, 3vw, 22px);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: bold;
-
+    transition: all 0.3s ease;
+    width: auto;
+    max-width: 100%;
 }
 
-.btn:hover{
-    background-color: #4e4e4e6e; 
-    color: rgb(255, 255, 255); 
+.btn:hover {
+    background-color: #4e4e4e6e;
+    color: rgb(255, 255, 255);
     text-decoration: underline;
+    transform: scale(1.05);
 }
 
 /*SECCION CASCADAS*/
-.bg2{
+.bg2 {
     background-image: url(/IMG/como-hacer-una-cascada.jpeg);
-    background-size:cover;
+    background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    background-position: center;
 }
 
 .ng{
@@ -129,11 +248,12 @@ nav a:hover {
     background-color: #0000005e;
 }
 /*SECCION DECORACION DE INTERIORES/EXTERIORES*/
-.bg3{
+.bg3 {
     background-image: url(/IMG/decora2.jpeg);
-    background-size:cover;
+    background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    background-position: center;
 }
 /*SECCION IMITACION REALISTA A LA NATURALEZA*/
 /*SECCION ASESORIA PERSONALIZADA*/
@@ -145,22 +265,43 @@ nav a:hover {
 /*ORDEN DE LAS IMAGENES 2 COLUMNAS*/
 .services {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); 
-    gap: 0px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 10px;
+}
+
+.services div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .services div img {
-    margin-top: 25px;
-    width: 30rem;
-    height: 20rem;
+    margin-top: 15px;
+    width: 100%;
+    max-width: 480px;
+    height: auto;
+    aspect-ratio: 3/2;
+    object-fit: cover;
     padding: 8px;
     background-color: rgba(255, 255, 255, 0.501);
     border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.services div img:hover {
+    transform: scale(1.05);
 }
 
 .services div h3 {
-    font-size: 25px;
+    font-size: clamp(18px, 3vw, 25px);
     text-shadow: 4px 3px 4px rgba(0, 0, 0, 0.79);
+    padding: 5px 10px;
+}
+
+.services div h1 {
+    font-size: clamp(20px, 4vw, 30px);
 }
 
 
@@ -173,37 +314,60 @@ nav a:hover {
 
 }
 
-.shadow{
+.shadow {
     text-shadow: 4px 3px 4px rgba(0, 0, 0, 0.738);
-    font-size: 30px;
+    font-size: clamp(20px, 4vw, 30px);
 }
 
 /*1 FILA*/
-
 .services1 {
-    display: grid;
-    grid-template-columns: repeat(1fr); 
-    gap: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+}
+
+.services1 div {
+    width: 100%;
+    max-width: 1200px;
+    text-align: center;
 }
 
 .services1 div h3 {
-    font-size: 20px;
+    font-size: clamp(16px, 2.5vw, 20px);
     text-shadow: 4px 3px 4px rgba(0, 0, 0, 0.79);
+    padding: 5px 15px;
 }
+
 .services1 div h2 {
     text-shadow: 4px 3px 4px rgba(0, 0, 0, 0.79);
+    font-size: clamp(22px, 4vw, 32px);
 }
 
 .services1 div img {
-    margin-top: 25px;
-    width: 60rem;
-    height: 40rem;
+    margin-top: 15px;
+    width: 100%;
+    max-width: 960px;
+    height: auto;
     padding: 8px;
     background-color: rgba(255, 255, 255, 0.501);
     border-radius: 10px;
+    transition: transform 0.3s ease;
 }
-.more{
-    font-size: 30px;
+
+.services1 div img:hover {
+    transform: scale(1.02);
+}
+
+.more {
+    font-size: clamp(25px, 5vw, 30px);
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.more:hover {
+    transform: scale(1.2);
 }
 
 
@@ -211,44 +375,61 @@ nav a:hover {
 
 
 /*ESTILOS CONTACTO*/
-
 .seccion4 {
-    padding: 40px;
+    padding: clamp(20px, 5vw, 40px);
     text-align: center;
     color: #ffffff;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
-    background-color: rgba(0, 0, 0, 0.217); 
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: rgba(0, 0, 0, 0.217);
     align-items: center;
     text-shadow: 4px 3px 4px rgba(0, 0, 0, 0.738);
-
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.bg4{
+.bg4 {
     background-image: url(/IMG/bgg4.jpg);
-    background-size:cover;
+    background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    background-position: center;
 }
 
-.seccion4 h2{
-    font-size: 40px;
-    margin-top: 90px;
+.seccion4 h2 {
+    font-size: clamp(28px, 6vw, 40px);
+    margin-top: clamp(70px, 10vw, 90px);
+    margin-bottom: 20px;
 }
 
-.seccion4 div{
-    margin-bottom: 15px;
+.seccion4 h3 {
+    font-size: clamp(16px, 3vw, 20px);
 }
 
-.seccion4 p{
-    font-size: 25px;
+.seccion4 div {
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.seccion4 p {
+    font-size: clamp(18px, 3.5vw, 25px);
+    margin-bottom: 30px;
 }
 
 .icons {
-    font-size: 40px;
+    font-size: clamp(30px, 6vw, 40px);
     text-decoration: none;
     color: #ffffff;
     padding: 10px;
     margin: 10px;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.icons:hover {
+    transform: scale(1.2);
+    color: #a6a3a3;
 }
 
 
@@ -257,6 +438,384 @@ footer {
     background-color: #000000;
     color: #fff;
     text-align: center;
-    padding: 10px;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
+    padding: 20px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+footer p {
+    font-size: clamp(14px, 2vw, 16px);
+    margin: 0;
+}
+
+/* ===== MEDIA QUERIES PARA RESPONSIVE ===== */
+
+/* Tablets y dispositivos medianos (hasta 1024px) */
+@media screen and (max-width: 1024px) {
+    header {
+        padding: 10px 15px;
+    }
+
+    .services {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .services div img {
+        max-width: 400px;
+    }
+}
+
+/* Tablets pequeñas (hasta 768px) - Mostrar menú hamburguesa */
+@media screen and (max-width: 768px) {
+    /* Mostrar botón hamburguesa */
+    .menu-toggle {
+        display: flex;
+    }
+
+    /* Ocultar navegación por defecto */
+    .nav-container {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(10px);
+        transition: right 0.3s ease;
+        overflow-y: auto;
+        padding-top: 80px;
+        z-index: 999;
+    }
+
+    /* Mostrar menú cuando está activo */
+    .nav-container.active {
+        right: 0;
+    }
+
+    /* Reorganizar navegación en vertical */
+    nav ul {
+        flex-direction: column;
+        gap: 0;
+        padding: 20px;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 0;
+        width: 100%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    nav a {
+        display: block;
+        padding: 15px 10px;
+        font-size: 18px;
+        width: 100%;
+    }
+
+    /* Ajustar logo en móvil */
+    .logo-container a h1 {
+        font-size: clamp(0.9rem, 4vw, 1.3rem);
+        margin-left: 0;
+    }
+
+    /* Grid de imágenes en 1 columna */
+    .services {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 5px;
+    }
+
+    .services div img {
+        max-width: 100%;
+    }
+
+    /* Ajustar secciones */
+    .seccion {
+        padding: 20px 10px;
+    }
+
+    .seccion h2 {
+        margin-top: 80px;
+    }
+
+    /* Botones más pequeños */
+    .btn {
+        font-size: clamp(14px, 4vw, 18px);
+        padding: 10px 15px;
+        width: 90%;
+        max-width: 300px;
+    }
+
+    /* Contacto */
+    .seccion4 {
+        padding: 20px 15px;
+    }
+
+    .seccion4 h2 {
+        margin-top: 80px;
+    }
+
+    /* Backgrounds en modo scroll para móviles */
+    .bg1, .bg2, .bg3, .bg4 {
+        background-attachment: scroll;
+    }
+}
+
+/* Móviles pequeños (hasta 480px) */
+@media screen and (max-width: 480px) {
+    header {
+        padding: 8px 10px;
+    }
+
+    .logo-container a h1 {
+        font-size: clamp(0.75rem, 5vw, 1rem);
+    }
+
+    .logo-container a h1 i {
+        display: none; /* Ocultar icono en pantallas muy pequeñas */
+    }
+
+    .menu-toggle {
+        padding: 5px;
+    }
+
+    .menu-toggle span {
+        width: 25px;
+        height: 2px;
+    }
+
+    .nav-container {
+        width: 100%;
+        right: -100%;
+    }
+
+    nav a {
+        font-size: 16px;
+        padding: 12px 10px;
+    }
+
+    .seccion {
+        padding: 15px 8px;
+    }
+
+    .seccion h2 {
+        margin-top: 70px;
+    }
+
+    .services {
+        padding: 5px;
+        gap: 10px;
+    }
+
+    .services div h3 {
+        font-size: clamp(16px, 4vw, 20px);
+        padding: 5px;
+    }
+
+    .services1 div h3 {
+        font-size: clamp(14px, 3.5vw, 18px);
+        padding: 5px 10px;
+    }
+
+    .btn {
+        font-size: 14px;
+        padding: 8px 12px;
+        width: 95%;
+    }
+
+    .seccion4 {
+        padding: 15px 10px;
+    }
+
+    .seccion4 h2 {
+        margin-top: 70px;
+    }
+
+    .seccion4 div {
+        padding: 5px;
+        margin-bottom: 15px;
+    }
+
+    .icons {
+        font-size: clamp(25px, 8vw, 35px);
+        margin: 5px;
+    }
+}
+
+/* Móviles muy pequeños (hasta 360px) */
+@media screen and (max-width: 360px) {
+    .logo-container a h1 {
+        font-size: 0.7rem;
+    }
+
+    .services div img {
+        padding: 5px;
+    }
+
+    .services1 div img {
+        padding: 5px;
+    }
+
+    .btn {
+        font-size: 13px;
+        padding: 7px 10px;
+    }
+}
+
+/* Landscape mode para móviles */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    .seccion h2 {
+        margin-top: 60px;
+    }
+
+    .seccion4 h2 {
+        margin-top: 60px;
+    }
+
+    .nav-container {
+        padding-top: 60px;
+    }
+
+    nav ul {
+        padding: 10px;
+    }
+
+    nav a {
+        padding: 10px;
+        font-size: 16px;
+    }
+}
+
+/* ===== ANIMACIONES DE SCROLL PROFESIONALES ===== */
+
+/* Estado inicial - elementos ocultos */
+.services > div,
+.services1 > div,
+.services2 > div,
+.seccion2 p,
+.seccion2 img,
+.seccion img {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Estado visible cuando aparece en viewport */
+.services > div.scroll-visible,
+.services1 > div.scroll-visible,
+.services2 > div.scroll-visible,
+.seccion2 p.scroll-visible,
+.seccion2 img.scroll-visible,
+.seccion img.scroll-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Animación escalonada para elementos en grids */
+.services > div:nth-child(1) { transition-delay: 0.1s; }
+.services > div:nth-child(2) { transition-delay: 0.2s; }
+.services > div:nth-child(3) { transition-delay: 0.3s; }
+.services > div:nth-child(4) { transition-delay: 0.4s; }
+.services > div:nth-child(5) { transition-delay: 0.5s; }
+.services > div:nth-child(6) { transition-delay: 0.6s; }
+.services > div:nth-child(7) { transition-delay: 0.1s; }
+.services > div:nth-child(8) { transition-delay: 0.2s; }
+.services > div:nth-child(9) { transition-delay: 0.3s; }
+.services > div:nth-child(10) { transition-delay: 0.4s; }
+
+.services2 > div:nth-child(1) { transition-delay: 0.1s; }
+.services2 > div:nth-child(2) { transition-delay: 0.2s; }
+.services2 > div:nth-child(3) { transition-delay: 0.3s; }
+.services2 > div:nth-child(4) { transition-delay: 0.4s; }
+.services2 > div:nth-child(5) { transition-delay: 0.5s; }
+.services2 > div:nth-child(6) { transition-delay: 0.6s; }
+.services2 > div:nth-child(7) { transition-delay: 0.1s; }
+.services2 > div:nth-child(8) { transition-delay: 0.2s; }
+.services2 > div:nth-child(9) { transition-delay: 0.3s; }
+
+/* Animación suave para smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Mejorar performance de animaciones */
+.services > div,
+.services1 > div,
+.services2 > div,
+.seccion2 p,
+.seccion2 img,
+.seccion img {
+    will-change: opacity, transform;
+}
+
+/* Desactivar will-change después de la animación */
+.services > div.scroll-visible,
+.services1 > div.scroll-visible,
+.services2 > div.scroll-visible,
+.seccion2 p.scroll-visible,
+.seccion2 img.scroll-visible,
+.seccion img.scroll-visible {
+    will-change: auto;
+}
+
+/* Animación de fade-in para header al scroll */
+header {
+    animation: fadeInDown 0.6s ease-out;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Efecto parallax sutil en backgrounds (solo desktop) */
+@media screen and (min-width: 769px) {
+    .bg1, .bg2, .bg3, .bg4 {
+        background-attachment: fixed;
+    }
+}
+
+/* Animación para botones */
+.btn {
+    animation: fadeInUp 1s ease-out 0.5s both;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Reduce motion para usuarios con preferencias de accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .services > div,
+    .services1 > div,
+    .services2 > div,
+    .seccion2 p,
+    .seccion2 img,
+    .seccion img {
+        opacity: 1;
+        transform: none;
+    }
 }

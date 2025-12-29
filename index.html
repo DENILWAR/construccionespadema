@@ -16,12 +16,21 @@
     <link rel="stylesheet" href="syles.css">
 </head>
 <body>
+    <!-- Cursor personalizado -->
+    <div class="custom-cursor"></div>
+    <div class="custom-cursor-circle"></div>
+
     <div>
         <header>
-            <div>
+            <div class="logo-container">
                 <a href="index.html"><h1><i class="fa-solid fa-vihara fa-bounce"></i>CONSTRUCCIONES PADEMA S.L</h1></a>
             </div>
-            <div>
+            <button class="menu-toggle" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-container">
                 <nav>
                     <ul>
                         <li><a href="#inicio">INICIO</a></li>
@@ -195,7 +204,114 @@
         <p>&copy; 2023 Padema SL</p>
     </footer>
 
+    <script>
+        // Cursor personalizado
+        const cursor = document.querySelector('.custom-cursor');
+        const cursorCircle = document.querySelector('.custom-cursor-circle');
 
+        let mouseX = 0;
+        let mouseY = 0;
+        let cursorX = 0;
+        let cursorY = 0;
+        let circleX = 0;
+        let circleY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animateCursor() {
+            // Seguimiento suave del cursor
+            cursorX += (mouseX - cursorX) * 0.9;
+            cursorY += (mouseY - cursorY) * 0.9;
+            circleX += (mouseX - circleX) * 0.15;
+            circleY += (mouseY - circleY) * 0.15;
+
+            cursor.style.left = cursorX + 'px';
+            cursor.style.top = cursorY + 'px';
+            cursorCircle.style.left = circleX + 'px';
+            cursorCircle.style.top = circleY + 'px';
+
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        // Detectar elementos clickeables
+        const clickables = document.querySelectorAll('a, button, .btn, .icons, input, textarea, .menu-toggle');
+
+        clickables.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.classList.add('hover');
+                cursorCircle.classList.add('hover');
+            });
+
+            el.addEventListener('mouseleave', () => {
+                cursor.classList.remove('hover');
+                cursorCircle.classList.remove('hover');
+            });
+        });
+
+        // Funcionalidad del menú hamburguesa
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navContainer = document.querySelector('.nav-container');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navContainer.classList.toggle('active');
+            document.body.classList.toggle('menu-open');
+        });
+
+        // Cerrar menú al hacer clic en un enlace
+        const navLinks = document.querySelectorAll('.nav-container a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navContainer.classList.remove('active');
+                document.body.classList.remove('menu-open');
+            });
+        });
+
+        // Cerrar menú al hacer clic fuera
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('header')) {
+                menuToggle.classList.remove('active');
+                navContainer.classList.remove('active');
+                document.body.classList.remove('menu-open');
+            }
+        });
+
+        // Animación de scroll reveal profesional
+        const scrollElements = document.querySelectorAll('.services > div, .services1 > div, .services2 > div, .seccion2 p, .seccion2 img');
+
+        const elementInView = (el, offset = 100) => {
+            const elementTop = el.getBoundingClientRect().top;
+            return (elementTop <= (window.innerHeight || document.documentElement.clientHeight) - offset);
+        };
+
+        const displayScrollElement = (element) => {
+            element.classList.add('scroll-visible');
+        };
+
+        const hideScrollElement = (element) => {
+            element.classList.remove('scroll-visible');
+        };
+
+        const handleScrollAnimation = () => {
+            scrollElements.forEach((el) => {
+                if (elementInView(el, 100)) {
+                    displayScrollElement(el);
+                }
+            });
+        };
+
+        window.addEventListener('scroll', () => {
+            handleScrollAnimation();
+        });
+
+        // Ejecutar al cargar la página
+        handleScrollAnimation();
+    </script>
 
 </body>
 
